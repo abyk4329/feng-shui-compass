@@ -172,7 +172,16 @@ header p {
 }
 
 .section.active { display:block; animation: sectionIn 700ms cubic-bezier(.2,.9,.3,1); }
-@keyframes sectionIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: none; } }
+@keyframes sectionIn { 
+    from { 
+        opacity:0; 
+        transform: translateY(10px); 
+    } 
+    to { 
+        opacity:1; 
+        transform: none; 
+    } 
+}
 
 .section h2 { 
     font-size:20px; 
@@ -333,14 +342,37 @@ footer { text-align:center; color:var(--creme); margin-top:26px }
     }
 }
 
-@keyframes growPlant {
+@keyframes sectionIn { 
+    from { 
+        opacity:0; 
+        transform: translateY(10px); 
+    } 
+    to { 
+        opacity:1; 
+        transform: none; 
+    } 
+}
+
+@keyframes gentleGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(247, 231, 206, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(247, 231, 206, 0.4);
+    }
+}
+
+@keyframes signatureBounce {
     0% {
-        transform: scale(0) rotate(0deg);
+        transform: scale(0.8) rotate(-5deg);
         opacity: 0;
     }
     50% {
-        transform: scale(0.7) rotate(5deg);
-        opacity: 0.8;
+        transform: scale(1.1) rotate(2deg);
+        opacity: 1;
+    }
+    70% {
+        transform: scale(0.95) rotate(-1deg);
     }
     100% {
         transform: scale(1) rotate(0deg);
@@ -348,164 +380,13 @@ footer { text-align:center; color:var(--creme); margin-top:26px }
     }
 }
 
-@keyframes leafSway {
-    0%, 100% {
-        transform: rotate(-2deg);
-    }
-    50% {
-        transform: rotate(2deg);
-    }
-}
 
-@keyframes sparkle {
-    0%, 100% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
 
-@keyframes breathe {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: -200% center;
-    }
-    100% {
-        background-position: 200% center;
-    }
-}
-
-/* Plant decoration */
-.plant-decoration {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 80px;
-    z-index: 10;
-    animation: growPlant 2s ease-out 1s forwards, float 4s ease-in-out infinite 3s;
-    opacity: 0;
-}
-
-.plant-stem {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 4px;
-    height: 50px;
-    background: linear-gradient(to top, #8B7355, #A09086);
-    border-radius: 2px;
-    transform: translateX(-50%);
-}
-
-.plant-leaf {
-    position: absolute;
-    width: 20px;
-    height: 30px;
-    background: linear-gradient(135deg, #9CAF88, #7A8471);
-    border-radius: 50% 0;
-    animation: leafSway 3s ease-in-out infinite;
-}
-
-.plant-leaf:nth-child(2) {
-    bottom: 35px;
-    left: 15px;
-    transform: rotate(-45deg);
-    animation-delay: -0.5s;
-}
-
-.plant-leaf:nth-child(3) {
-    bottom: 30px;
-    right: 15px;
-    transform: rotate(45deg) scaleX(-1);
-    animation-delay: -1s;
-}
-
-.plant-leaf:nth-child(4) {
-    bottom: 45px;
-    left: 20px;
-    transform: rotate(-30deg);
-    animation-delay: -1.5s;
-    width: 15px;
-    height: 20px;
-}
-
-/* Sparkle effects */
-.sparkles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.sparkle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--gold);
-    border-radius: 50%;
-    animation: sparkle 2s ease-in-out infinite;
-    box-shadow: 0 0 6px var(--gold);
-}
-
-.sparkle:nth-child(1) {
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.sparkle:nth-child(2) {
-    top: 40%;
-    left: 80%;
-    animation-delay: 0.7s;
-}
-
-.sparkle:nth-child(3) {
-    top: 70%;
-    left: 30%;
-    animation-delay: 1.4s;
-}
-
-.sparkle:nth-child(4) {
-    top: 15%;
-    left: 70%;
-    animation-delay: 2.1s;
-}
-
-.sparkle:nth-child(5) {
-    top: 60%;
-    left: 60%;
-    animation-delay: 2.8s;
-}
 
 /* Enhanced button animations */
 .compass-btn {
     background: linear-gradient(135deg, var(--gold) 0%, #f1d7b4 100%);
-    background-size: 200% 200%;
-    animation: shimmer 3s ease-in-out infinite;
     color: #2b2b2b;
     padding: 18px 40px;
     border: none;
@@ -531,24 +412,28 @@ footer { text-align:center; color:var(--creme); margin-top:26px }
     box-shadow: 
         0 12px 25px -3px rgba(247, 231, 206, 0.4),
         0 8px 16px -2px rgba(247, 231, 206, 0.25);
-    animation: breathe 1s ease-in-out infinite;
 }
 
-/* Enhanced section transitions */
+.compass-btn:active {
+    transform: translateY(0);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced section transitions - smoother */
 .section {
-    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));
+    background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.9));
     border-radius: 16px;
     padding: 28px;
     margin: 18px 0;
-    box-shadow: 0 8px 24px rgba(89,115,88,0.06);
-    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 6px 20px rgba(89,115,88,0.04);
+    border: 1px solid rgba(0,0,0,0.02);
     display: none;
-    animation: breathe 6s ease-in-out infinite;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section.active { 
     display: block; 
-    animation: sectionIn 700ms cubic-bezier(.2,.9,.3,1), breathe 6s ease-in-out infinite 1s; 
+    animation: sectionIn 800ms cubic-bezier(.2,.9,.3,1); 
 }
 
 /* Enhanced compass animations */
@@ -562,28 +447,16 @@ footer { text-align:center; color:var(--creme); margin-top:26px }
     align-items: center;
     justify-content: center;
     border: 2px solid rgba(0,0,0,0.04);
-    animation: float 4s ease-in-out infinite;
-}
-
-.compass-needle {
-    position: absolute;
-    width: 4px;
-    height: 42%;
-    background: linear-gradient(180deg, #d33, #d33 40%, var(--rosy-finch) 55%);
-    border-radius: 4px;
-    transform-origin: 50% 60%;
-    transition: transform 400ms cubic-bezier(.2,.9,.3,1);
-    z-index: 4;
-    animation: leafSway 8s ease-in-out infinite;
+    animation: fadeInUp 1s ease-out forwards;
 }
 
 /* Enhanced header animations */
 header {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    justify-content: center;
-    flex-direction: column;
+    display:flex;
+    align-items:center;
+    gap:24px;
+    justify-content:center;
+    flex-direction:column;
     margin-bottom: 28px;
     animation: fadeInUp 1s ease-out forwards;
 }
@@ -597,14 +470,6 @@ header h1 {
     animation: fadeInUp 1s ease-out 0.5s both;
 }
 
-.signature-image {
-    max-width: 120px;
-    height: auto;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
-    opacity: 0.9;
-    animation: fadeInUp 1s ease-out 0.8s both, float 3s ease-in-out infinite 2s;
-}
-
 /* Floating elements */
 .container {
     max-width: 920px;
@@ -613,80 +478,7 @@ header h1 {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Additional animations */
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.7;
-    }
-}
 
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes glow {
-    0%, 100% {
-        box-shadow: 0 0 20px rgba(247, 231, 206, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 30px rgba(247, 231, 206, 0.6);
-    }
-}
-
-/* Enhanced form animations */
-.form-group {
-    animation: slideInFromLeft 0.6s ease-out forwards;
-    opacity: 0;
-}
-
-.form-group:nth-child(2) {
-    animation-delay: 0.3s;
-}
-
-.form-group:nth-child(3) {
-    animation-delay: 0.6s;
-}
-
-/* Enhanced input focus effects */
-input[type=date], select {
-    width: 100%;
-    padding: 12px 14px;
-    border-radius: 8px;
-    border: 1px solid rgba(0,0,0,0.06);
-    background: #fff;
-    color: var(--muted);
-    font-size: 15px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-input:focus, select:focus {
-    outline: none;
-    box-shadow: 0 4px 14px rgba(247,231,206,0.08);
-    border-color: rgba(247,231,206,0.25);
-    transform: scale(1.02);
-    animation: glow 2s ease-in-out infinite;
-}
 
 /* Enhanced direction animations */
 .direction {
@@ -698,12 +490,12 @@ input:focus, select:focus {
     font-weight: 700;
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: slideInFromRight 0.8s ease-out forwards;
+    animation: fadeInUp 1s ease-out forwards;
     opacity: 0;
 }
 
 .direction:nth-child(even) {
-    animation: slideInFromLeft 0.8s ease-out forwards;
+    animation: fadeInUp 1s ease-out forwards;
 }
 
 .direction.good {
@@ -726,6 +518,12 @@ input:focus, select:focus {
     animation-delay: 0.6s;
 }
 
+.direction:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
 /* Enhanced kua number animation */
 .kua-number {
     font-size: 56px;
@@ -733,25 +531,12 @@ input:focus, select:focus {
     color: var(--rosy-finch);
     text-align: center;
     margin-bottom: 6px;
-    animation: pulse 2s ease-in-out infinite, breathe 3s ease-in-out infinite;
+    animation: fadeInUp 1s ease-out 1.2s both;
 }
 
-/* Enhanced plant animation */
-.plant-decoration {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 80px;
-    z-index: 10;
-    animation: growPlant 2s ease-out 1s forwards, float 4s ease-in-out infinite 3s;
-    opacity: 0;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.plant-decoration:hover {
-    animation: growPlant 0.5s ease-out forwards, pulse 1s ease-in-out infinite;
+.kua-number:hover {
+    transform: scale(1.02);
+    color: #B88B7A;
 }
 
 /* Enhanced compass center */
@@ -762,23 +547,7 @@ input:focus, select:focus {
     background: var(--gold);
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     z-index: 5;
-    animation: pulse 3s ease-in-out infinite;
-}
-
-/* Enhanced sparkle effects */
-.sparkle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--gold);
-    border-radius: 50%;
-    animation: sparkle 2s ease-in-out infinite;
-    box-shadow: 0 0 6px var(--gold);
-}
-
-.sparkle:hover {
-    animation: sparkle 0.5s ease-in-out infinite, glow 1s ease-in-out infinite;
-    transform: scale(1.5);
+    animation: fadeInUp 1s ease-out 1.5s both;
 }
 
 /* Enhanced background with subtle movement */
@@ -786,37 +555,66 @@ body {
     font-family: 'Assistant', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     background: linear-gradient(180deg, var(--froth) 0%, var(--chai) 60%);
     background-size: 100% 200%;
-    animation: backgroundMove 20s ease-in-out infinite;
+    animation: fadeInUp 0.5s ease-out forwards;
     color: var(--latte);
     direction: rtl;
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: all 0.5s ease;
 }
 
-@keyframes backgroundMove {
-    0%, 100% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 0% -20%;
-    }
-}
-
-/* Enhanced signature animation */
+/* Enhanced signature animation - more delicate */
 .signature-large, .signature-image {
-    animation: fadeInUp 1s ease-out 0.8s both, float 3s ease-in-out infinite 2s;
-    transition: transform 0.3s ease;
+    animation: signatureBounce 1.5s ease-out 1s both;
+    transition: all 0.3s ease;
 }
 
 .signature-large:hover, .signature-image:hover {
-    transform: scale(1.1) rotate(2deg);
-    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2));
+    transform: scale(1.05) rotate(1deg);
+    filter: drop-shadow(0 6px 18px rgba(0,0,0,0.12));
 }
 
-@media (prefers-reduced-motion: reduce){ 
-    *{animation:none!important; transition:none!important} 
-    .plant-decoration { display: none; }
-    .sparkles { display: none; }
-    body { background-size: 100% 100%; }
+/* Enhanced form animations */
+.form-group {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
 }
+
+.form-group:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.form-group:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.form-group:hover {
+    transform: translateY(-1px);
+}
+
+/* Enhanced input focus effects */
+input[type=date], select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: #fff;
+    color: var(--muted);
+    font-size: 15px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 4px 14px rgba(247,231,206,0.08);
+    border-color: rgba(247,231,206,0.25);
+    transform: scale(1.02);
+    animation: gentleGlow 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced_motion: reduce){ 
+    *{animation:none!important; transition:none!important} 
+}
+
+

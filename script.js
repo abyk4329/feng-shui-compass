@@ -427,41 +427,43 @@ function switchSection(fromEl, toEl) {
     }
 }
 
-// הוספת אפקט לכיוונים במצפן
+// הוספת אפקט לכיוונים במצפן - יותר עדין
 document.addEventListener('DOMContentLoaded', function() {
     // אנימציה חלקה לעמידה
     setTimeout(() => {
         document.body.classList.add('loaded');
     }, 100);
-    
+
     const directions = document.querySelectorAll('.direction');
-    
+
     directions.forEach((direction, index) => {
         direction.addEventListener('mouseenter', function() {
-            this.style.transform += ' scale(1.1) translateY(-2px)';
+            this.style.transform += ' scale(1.03) translateY(-1px)';
             this.style.zIndex = '100';
-            
-            // אפקט הארה
-            this.style.boxShadow = '0 8px 25px rgba(247, 231, 206, 0.6)';
+
+            // אפקט הארה עדין
+            this.style.boxShadow = '0 4px 15px rgba(247, 231, 206, 0.4)';
+            this.style.filter = 'brightness(1.05)';
         });
-        
+
         direction.addEventListener('mouseleave', function() {
             // שחזור המיקום המקורי
-            const originalTransform = this.classList.contains('north') || this.classList.contains('south') ? 
-                'translateX(-50%)' : 
-                this.classList.contains('east') || this.classList.contains('west') ? 
+            const originalTransform = this.classList.contains('north') || this.classList.contains('south') ?
+                'translateX(-50%)' :
+                this.classList.contains('east') || this.classList.contains('west') ?
                 'translateY(-50%)' : '';
-            
+
             this.style.transform = originalTransform;
             this.style.zIndex = 'auto';
             this.style.boxShadow = '';
+            this.style.filter = '';
         });
-        
-        // אנימציית כניסה מדורגת
-        direction.style.animationDelay = `${0.8 + index * 0.1}s`;
+
+        // אנימציית כניסה מדורגת עדינה יותר
+        direction.style.animationDelay = `${1 + index * 0.15}s`;
     });
-    
-    // אפקט לחלקות למעברים בין חלקים
+
+    // אפקט לחלקות למעברים בין חלקים - משופר
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => {
         section.addEventListener('transitionend', function() {
@@ -471,54 +473,175 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // הוספת אפקטים אינטראקטיביים לכפתורים
+
+    // הוספת אפקטים אינטראקטיביים לכפתורים - יותר עדינים
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
         button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px) scale(1.02)';
+            this.style.transform = 'translateY(-1px) scale(1.01)';
+            this.style.boxShadow = '0 6px 15px rgba(247, 231, 206, 0.2)';
         });
-        
+
         button.addEventListener('mouseleave', function() {
             this.style.transform = '';
+            this.style.boxShadow = '';
         });
-        
+
         button.addEventListener('mousedown', function() {
-            this.style.transform = 'translateY(0) scale(0.98)';
+            this.style.transform = 'translateY(0) scale(0.99)';
+            this.style.transition = 'all 0.1s ease';
         });
-        
+
         button.addEventListener('mouseup', function() {
-            this.style.transform = 'translateY(-2px) scale(1.02)';
+            this.style.transform = 'translateY(-1px) scale(1.01)';
+            this.style.transition = 'all 0.3s ease';
         });
     });
-    
-    // אנימציה לצמח כשעוברים עליו עם העכבר
+
+    // אנימציה לצמח כשעוברים עליו עם העכבר - משופרת
     const plant = document.querySelector('.plant-decoration');
     if (plant) {
         plant.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.1)';
-            this.style.transition = 'transform 0.3s ease';
+            this.style.transform = 'scale(1.05) translateY(-2px) rotate(1deg)';
+            this.style.filter = 'brightness(1.1) drop-shadow(0 8px 20px rgba(0,0,0,0.1))';
         });
-        
+
         plant.addEventListener('mouseleave', function() {
             this.style.transform = '';
+            this.style.filter = '';
         });
     }
-    
-    // אפקט נצנוץ רנדומלי לנקודות הנצנוץ
+
+    // אפקט נצנוץ רנדומלי לנקודות הנצנוץ - משופר
     const sparkles = document.querySelectorAll('.sparkle');
     sparkles.forEach((sparkle, index) => {
+        // אנימציה רנדומית יותר
         setInterval(() => {
-            sparkle.style.animationDelay = Math.random() * 3 + 's';
-        }, 3000 + index * 500);
+            const randomDelay = Math.random() * 4 + 1;
+            sparkle.style.animationDelay = randomDelay + 's';
+            sparkle.style.animationDuration = (2 + Math.random() * 2) + 's';
+        }, 4000 + index * 300);
+
+        // אפקט hover לנצנוצים
+        sparkle.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(2)';
+            this.style.boxShadow = '0 0 20px var(--gold)';
+        });
+
+        sparkle.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+        });
     });
-    
+
     // הוספת אפקט מעבר חלק בין החלקים
     initSmoothTransitions();
-    
-    // הוספת אנימציית הקלדה לכותרות
+
+    // הוספת אנימציית הקלדה לכותרות - משופרת
     animateTyping();
+
+    // הוספת אפקטי מיקוד עדינים
+    addFocusEffects();
 });
+
+// פונקציה למעברים חלקים - משופרת
+function initSmoothTransitions() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.section, .form-group, .directions-info').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        observer.observe(el);
+    });
+}
+
+// אנימציית הקלדה לכותרות - משופרת
+function animateTyping() {
+    const titles = document.querySelectorAll('h1, h2');
+
+    titles.forEach((title, index) => {
+        const text = title.textContent;
+        title.textContent = '';
+        title.style.borderRight = '1px solid var(--gold)';
+
+        setTimeout(() => {
+            let i = 0;
+            const typeInterval = setInterval(() => {
+                title.textContent = text.slice(0, i + 1);
+                i++;
+
+                if (i >= text.length) {
+                    clearInterval(typeInterval);
+                    setTimeout(() => {
+                        title.style.borderRight = 'none';
+                    }, 800);
+                }
+            }, 120);
+        }, index * 800);
+    });
+}
+
+// הוספת אפקטי מיקוד עדינים
+function addFocusEffects() {
+    const inputs = document.querySelectorAll('input, select');
+
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            // אפקט עדין על האלמנט המכיל
+            const formGroup = this.closest('.form-group');
+            if (formGroup) {
+                formGroup.style.transform = 'translateY(-1px)';
+                formGroup.style.filter = 'brightness(1.02)';
+            }
+        });
+
+        input.addEventListener('blur', function() {
+            const formGroup = this.closest('.form-group');
+            if (formGroup) {
+                formGroup.style.transform = '';
+                formGroup.style.filter = '';
+            }
+        });
+    });
+}
+
+// הוספת אפקט פרטיקלים בזמן מעבר בין חלקים - משופר
+function createParticleEffect(element) {
+    for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 2.5s ease-out forwards;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            z-index: 1000;
+        `;
+
+        element.appendChild(particle);
+
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.remove();
+            }
+        }, 2500);
+    }
+}
 
 // פונקציה למעברים חלקים
 function initSmoothTransitions() {
@@ -592,17 +715,21 @@ function createParticleEffect(element) {
     }
 }
 
-// הוספת סגנון לאנימציית הפרטיקלים
+// הוספת סגנון לאנימציית הפרטיקלים - משופר
 const particleStyle = document.createElement('style');
 particleStyle.textContent = `
     @keyframes particleFloat {
         0% {
+            opacity: 0.8;
+            transform: translate(0, 0) scale(0.5);
+        }
+        20% {
             opacity: 1;
-            transform: translate(0, 0) scale(1);
+            transform: translate(${Math.random() * 40 - 20}px, ${Math.random() * 40 - 20}px) scale(1);
         }
         100% {
             opacity: 0;
-            transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) scale(0);
+            transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(0);
         }
     }
 `;
