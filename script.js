@@ -411,10 +411,19 @@ backToStartBtn.addEventListener('click', function() {
 
 // פונקציית עזר למעבר חלק בין חלקים
 function switchSection(fromEl, toEl) {
-    if (fromEl) fromEl.classList.remove('active');
+    if (fromEl) {
+        // יצירת אפקט פרטיקלים בעת היציאה מהחלק
+        createParticleEffect(fromEl);
+        fromEl.classList.remove('active');
+    }
     if (toEl) {
         toEl.classList.add('active');
         toEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        // יצירת אפקט פרטיקלים בעת הכניסה לחלק החדש
+        setTimeout(() => {
+            createParticleEffect(toEl);
+        }, 300);
     }
 }
 
@@ -431,6 +440,9 @@ document.addEventListener('DOMContentLoaded', function() {
         direction.addEventListener('mouseenter', function() {
             this.style.transform += ' scale(1.1) translateY(-2px)';
             this.style.zIndex = '100';
+            
+            // אפקט הארה
+            this.style.boxShadow = '0 8px 25px rgba(247, 231, 206, 0.6)';
         });
         
         direction.addEventListener('mouseleave', function() {
@@ -442,6 +454,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             this.style.transform = originalTransform;
             this.style.zIndex = 'auto';
+            this.style.boxShadow = '';
         });
         
         // אנימציית כניסה מדורגת
@@ -458,4 +471,139 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // הוספת אפקטים אינטראקטיביים לכפתורים
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px) scale(1.02)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+        
+        button.addEventListener('mousedown', function() {
+            this.style.transform = 'translateY(0) scale(0.98)';
+        });
+        
+        button.addEventListener('mouseup', function() {
+            this.style.transform = 'translateY(-2px) scale(1.02)';
+        });
+    });
+    
+    // אנימציה לצמח כשעוברים עליו עם העכבר
+    const plant = document.querySelector('.plant-decoration');
+    if (plant) {
+        plant.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        plant.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    }
+    
+    // אפקט נצנוץ רנדומלי לנקודות הנצנוץ
+    const sparkles = document.querySelectorAll('.sparkle');
+    sparkles.forEach((sparkle, index) => {
+        setInterval(() => {
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+        }, 3000 + index * 500);
+    });
+    
+    // הוספת אפקט מעבר חלק בין החלקים
+    initSmoothTransitions();
+    
+    // הוספת אנימציית הקלדה לכותרות
+    animateTyping();
 });
+
+// פונקציה למעברים חלקים
+function initSmoothTransitions() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    document.querySelectorAll('.section, .form-group, .directions-info').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+}
+
+// אנימציית הקלדה לכותרות
+function animateTyping() {
+    const titles = document.querySelectorAll('h1, h2');
+    
+    titles.forEach((title, index) => {
+        const text = title.textContent;
+        title.textContent = '';
+        title.style.borderRight = '2px solid var(--gold)';
+        
+        setTimeout(() => {
+            let i = 0;
+            const typeInterval = setInterval(() => {
+                title.textContent = text.slice(0, i + 1);
+                i++;
+                
+                if (i >= text.length) {
+                    clearInterval(typeInterval);
+                    setTimeout(() => {
+                        title.style.borderRight = 'none';
+                    }, 500);
+                }
+            }, 100);
+        }, index * 1000);
+    });
+}
+
+// הוספת אפקט פרטיקלים בזמן מעבר בין חלקים
+function createParticleEffect(element) {
+    for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 2s ease-out forwards;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+        `;
+        
+        element.appendChild(particle);
+        
+        setTimeout(() => {
+            particle.remove();
+        }, 2000);
+    }
+}
+
+// הוספת סגנון לאנימציית הפרטיקלים
+const particleStyle = document.createElement('style');
+particleStyle.textContent = `
+    @keyframes particleFloat {
+        0% {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) scale(0);
+        }
+    }
+`;
+document.head.appendChild(particleStyle);
