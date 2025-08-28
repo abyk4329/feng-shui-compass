@@ -3,46 +3,58 @@
   <defs>
     <radialGradient id="bg512" cx="50%" cy="50%" r="50%">
       <stop offset="0%" style="stop-color:#F7E7CE"/>
-      <stop offset="100%" style="stop-color:#E4D8CB"/>
+      <stop offset="70%" style="stop-color:#E4D8CB"/>
+      <stop offset="100%" style="stop-color:#CFB3A9"/>
     </radialGradient>
     <filter id="shadow512">
-      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#8B7355" flood-opacity="0.3"/>
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#8B7355" flood-opacity="0.3"/>
     </filter>
+    <linearGradient id="needle512" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B7355"/>
+      <stop offset="100%" style="stop-color:#A09086"/>
+    </linearGradient>
   </defs>
   
-  <!-- Background -->
-  <rect width="512" height="512" fill="url(#bg512)" rx="64"/>
+  <!-- Background with rounded corners -->
+  <rect width="512" height="512" fill="url(#bg512)" rx="84"/>
   
-  <!-- Outer ring -->
-  <circle cx="256" cy="256" r="180" fill="none" stroke="#A09086" stroke-width="6" filter="url(#shadow512)"/>
+  <!-- Outer compass ring -->
+  <circle cx="256" cy="256" r="190" fill="none" stroke="#A09086" stroke-width="6" filter="url(#shadow512)" opacity="0.8"/>
   
-  <!-- Inner decorative ring -->
-  <circle cx="256" cy="256" r="140" fill="none" stroke="#CFB3A9" stroke-width="3" opacity="0.7"/>
+  <!-- Inner ring -->
+  <circle cx="256" cy="256" r="150" fill="none" stroke="#CFB3A9" stroke-width="3" opacity="0.6"/>
   
-  <!-- Direction markers -->
-  <g stroke="#8B7355" stroke-width="4">
-    <line x1="256" y1="80" x2="256" y2="120"/>
-    <line x1="256" y1="392" x2="256" y2="432"/>
-    <line x1="392" y1="256" x2="432" y2="256"/>
-    <line x1="80" y1="256" x2="120" y2="256"/>
+  <!-- Cardinal direction markers (main directions) -->
+  <g stroke="#8B7355" stroke-width="4" opacity="0.7">
+    <line x1="256" y1="70" x2="256" y2="100"/>
+    <line x1="256" y1="412" x2="256" y2="442"/>
+    <line x1="412" y1="256" x2="442" y2="256"/>
+    <line x1="70" y1="256" x2="100" y2="256"/>
   </g>
   
-  <!-- Direction letters with better positioning -->
-  <g fill="#8B7355" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle">
-    <text x="256" y="60" dominant-baseline="central">צ</text>
-    <text x="452" y="256" dominant-baseline="central">מ</text>
-    <text x="256" y="452" dominant-baseline="central">ד</text>
-    <text x="60" y="256" dominant-baseline="central">ע</text>
+  <!-- Intermediate direction markers (8 points) -->
+  <g stroke="#A09086" stroke-width="2" opacity="0.5">
+    <line x1="346" y1="100" x2="358" y2="112"/>
+    <line x1="412" y1="166" x2="400" y2="178"/>
+    <line x1="412" y1="346" x2="400" y2="334"/>
+    <line x1="346" y1="412" x2="358" y2="400"/>
+    <line x1="166" y1="412" x2="154" y2="400"/>
+    <line x1="100" y1="346" x2="112" y2="334"/>
+    <line x1="100" y1="166" x2="112" y2="178"/>
+    <line x1="166" y1="100" x2="154" y2="112"/>
   </g>
   
   <!-- Compass needle -->
   <g transform="translate(256,256)">
-    <!-- North pointer -->
-    <path d="M-8,-100 L8,-100 L3,-40 L-3,-40 Z" fill="#8B7355" filter="url(#shadow512)"/>
-    <!-- South pointer -->
-    <path d="M-8,40 L8,40 L3,100 L-3,100 Z" fill="#CFB3A9"/>
-    <!-- Center dot -->
-    <circle r="16" fill="#F7E7CE" stroke="#A09086" stroke-width="2"/>
-    <circle r="8" fill="#8B7355"/>
+    <!-- North pointer (main direction) -->
+    <path d="M-8,-120 L0,-130 L8,-120 L3,-40 L-3,-40 Z" fill="url(#needle512)" filter="url(#shadow512)"/>
+    <!-- South pointer (secondary) -->
+    <path d="M-8,40 L0,50 L8,40 L3,120 L-3,120 Z" fill="#CFB3A9" opacity="0.8"/>
+    <!-- Center hub -->
+    <circle r="20" fill="#F7E7CE" stroke="#A09086" stroke-width="2"/>
+    <circle r="10" fill="#8B7355"/>
   </g>
+  
+  <!-- Decorative outer ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#CFB3A9" stroke-width="2" opacity="0.3"/>
 </svg>

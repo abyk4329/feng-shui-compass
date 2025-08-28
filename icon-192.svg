@@ -1,48 +1,60 @@
 <svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
   <!-- Background with subtle gradient -->
   <defs>
-    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+    <radialGradient id="bg192" cx="50%" cy="50%" r="50%">
       <stop offset="0%" style="stop-color:#F7E7CE"/>
-      <stop offset="100%" style="stop-color:#E4D8CB"/>
+      <stop offset="70%" style="stop-color:#E4D8CB"/>
+      <stop offset="100%" style="stop-color:#CFB3A9"/>
     </radialGradient>
-    <filter id="shadow">
-      <feDropShadow dx="1" dy="2" stdDeviation="1" flood-color="#8B7355" flood-opacity="0.3"/>
+    <filter id="shadow192">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#8B7355" flood-opacity="0.3"/>
     </filter>
+    <linearGradient id="needle192" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B7355"/>
+      <stop offset="100%" style="stop-color:#A09086"/>
+    </linearGradient>
   </defs>
   
-  <!-- Background -->
-  <rect width="192" height="192" fill="url(#bg)" rx="24"/>
+  <!-- Background with rounded corners -->
+  <rect width="192" height="192" fill="url(#bg192)" rx="32"/>
   
-  <!-- Outer ring -->
-  <circle cx="96" cy="96" r="70" fill="none" stroke="#A09086" stroke-width="3" filter="url(#shadow)"/>
+  <!-- Outer compass ring -->
+  <circle cx="96" cy="96" r="72" fill="none" stroke="#A09086" stroke-width="3" filter="url(#shadow192)" opacity="0.8"/>
   
-  <!-- Inner decorative ring -->
-  <circle cx="96" cy="96" r="50" fill="none" stroke="#CFB3A9" stroke-width="1" opacity="0.7"/>
+  <!-- Inner ring -->
+  <circle cx="96" cy="96" r="56" fill="none" stroke="#CFB3A9" stroke-width="1" opacity="0.6"/>
   
-  <!-- Direction markers -->
-  <g stroke="#8B7355" stroke-width="2">
-    <line x1="96" y1="30" x2="96" y2="45"/>
-    <line x1="96" y1="147" x2="96" y2="162"/>
-    <line x1="147" y1="96" x2="162" y2="96"/>
-    <line x1="30" y1="96" x2="45" y2="96"/>
+  <!-- Cardinal direction markers (subtle lines) -->
+  <g stroke="#8B7355" stroke-width="2" opacity="0.7">
+    <line x1="96" y1="28" x2="96" y2="40"/>
+    <line x1="96" y1="152" x2="96" y2="164"/>
+    <line x1="152" y1="96" x2="164" y2="96"/>
+    <line x1="28" y1="96" x2="40" y2="96"/>
   </g>
   
-  <!-- Direction letters with better positioning -->
-  <g fill="#8B7355" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">
-    <text x="96" y="22" dominant-baseline="central">צ</text>
-    <text x="170" y="96" dominant-baseline="central">מ</text>
-    <text x="96" y="170" dominant-baseline="central">ד</text>
-    <text x="22" y="96" dominant-baseline="central">ע</text>
+  <!-- Intermediate direction markers (smaller) -->
+  <g stroke="#A09086" stroke-width="1" opacity="0.5">
+    <line x1="128" y1="38" x2="134" y2="44"/>
+    <line x1="154" y1="64" x2="148" y2="70"/>
+    <line x1="154" y1="128" x2="148" y2="122"/>
+    <line x1="128" y1="154" x2="134" y2="148"/>
+    <line x1="64" y1="154" x2="58" y2="148"/>
+    <line x1="38" y1="128" x2="44" y2="122"/>
+    <line x1="38" y1="64" x2="44" y2="70"/>
+    <line x1="64" y1="38" x2="58" y2="44"/>
   </g>
   
   <!-- Compass needle -->
   <g transform="translate(96,96)">
-    <!-- North pointer -->
-    <path d="M-3,-40 L3,-40 L1,-15 L-1,-15 Z" fill="#8B7355" filter="url(#shadow)"/>
-    <!-- South pointer -->
-    <path d="M-3,15 L3,15 L1,40 L-1,40 Z" fill="#CFB3A9"/>
-    <!-- Center dot -->
-    <circle r="6" fill="#F7E7CE" stroke="#A09086" stroke-width="1"/>
-    <circle r="3" fill="#8B7355"/>
+    <!-- North pointer (main direction) -->
+    <path d="M-4,-45 L0,-50 L4,-45 L1,-16 L-1,-16 Z" fill="url(#needle192)" filter="url(#shadow192)"/>
+    <!-- South pointer (secondary) -->
+    <path d="M-4,16 L0,20 L4,16 L1,45 L-1,45 Z" fill="#CFB3A9" opacity="0.8"/>
+    <!-- Center hub -->
+    <circle r="8" fill="#F7E7CE" stroke="#A09086" stroke-width="1"/>
+    <circle r="4" fill="#8B7355"/>
   </g>
+  
+  <!-- Decorative outer ring -->
+  <circle cx="96" cy="96" r="84" fill="none" stroke="#CFB3A9" stroke-width="1" opacity="0.3"/>
 </svg>
