@@ -1,0 +1,12 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#F7E7CE"/>
+  <circle cx="256" cy="256" r="200" fill="#E4D8CB" stroke="#A09086" stroke-width="4"/>
+  <circle cx="256" cy="256" r="160" fill="none" stroke="#CFB3A9" stroke-width="2"/>
+  <text x="256" y="90" text-anchor="middle" fill="#8B7355" font-size="40" font-weight="bold">צ</text>
+  <text x="422" y="256" text-anchor="middle" fill="#8B7355" font-size="40" font-weight="bold">מ</text>
+  <text x="256" y="422" text-anchor="middle" fill="#8B7355" font-size="40" font-weight="bold">ד</text>
+  <text x="90" y="256" text-anchor="middle" fill="#8B7355" font-size="40" font-weight="bold">ע</text>
+  <circle cx="256" cy="256" r="20" fill="#F7E7CE" stroke="#A09086" stroke-width="2"/>
+  <rect x="252" y="80" width="8" height="60" fill="#8B7355"/>
+  <rect x="252" y="372" width="8" height="60" fill="#CFB3A9"/>
+</svg>
