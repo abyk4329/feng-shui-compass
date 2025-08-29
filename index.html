@@ -63,6 +63,28 @@
                 <div id="kua-display" aria-live="polite" aria-atomic="true">
                     <div class="kua-number" id="kua-number"></div>
                     <div class="kua-description" id="kua-description"></div>
+                    
+                    <div class="kua-details" id="kua-details">
+                        <div class="detail-section">
+                            <h3>אישיות:</h3>
+                            <p id="kua-personality"></p>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h3>חוזקות:</h3>
+                            <p id="kua-strengths"></p>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h3>אתגרים:</h3>
+                            <p id="kua-challenges"></p>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h3>המלצות קריירה:</h3>
+                            <p id="kua-career"></p>
+                        </div>
+                    </div>
                 </div>
                 <button id="go-to-compass" class="compass-btn">עבור למצפן</button>
             </section>
@@ -75,14 +97,38 @@
                         <div class="compass-needle" id="compass-needle"></div>
                         <div class="compass-center"></div>
                         <div class="compass-directions">
-                            <div class="direction north" data-direction="north">צפון</div>
-                            <div class="direction northeast" data-direction="northeast">צפון מזרח</div>
-                            <div class="direction east" data-direction="east">מזרח</div>
-                            <div class="direction southeast" data-direction="southeast">דרום מזרח</div>
-                            <div class="direction south" data-direction="south">דרום</div>
-                            <div class="direction southwest" data-direction="southwest">דרום מערב</div>
-                            <div class="direction west" data-direction="west">מערב</div>
-                            <div class="direction northwest" data-direction="northwest">צפון מערב</div>
+                            <div class="direction north" data-direction="north">
+                                <div class="direction-name">צפון</div>
+                                <div class="direction-meaning" id="north-meaning"></div>
+                            </div>
+                            <div class="direction northeast" data-direction="northeast">
+                                <div class="direction-name">צפון מזרח</div>
+                                <div class="direction-meaning" id="northeast-meaning"></div>
+                            </div>
+                            <div class="direction east" data-direction="east">
+                                <div class="direction-name">מזרח</div>
+                                <div class="direction-meaning" id="east-meaning"></div>
+                            </div>
+                            <div class="direction southeast" data-direction="southeast">
+                                <div class="direction-name">דרום מזרח</div>
+                                <div class="direction-meaning" id="southeast-meaning"></div>
+                            </div>
+                            <div class="direction south" data-direction="south">
+                                <div class="direction-name">דרום</div>
+                                <div class="direction-meaning" id="south-meaning"></div>
+                            </div>
+                            <div class="direction southwest" data-direction="southwest">
+                                <div class="direction-name">דרום מערב</div>
+                                <div class="direction-meaning" id="southwest-meaning"></div>
+                            </div>
+                            <div class="direction west" data-direction="west">
+                                <div class="direction-name">מערב</div>
+                                <div class="direction-meaning" id="west-meaning"></div>
+                            </div>
+                            <div class="direction northwest" data-direction="northwest">
+                                <div class="direction-name">צפון מערב</div>
+                                <div class="direction-meaning" id="northwest-meaning"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
