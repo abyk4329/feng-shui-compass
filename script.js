@@ -176,14 +176,25 @@ function calculateKua(birthDate, gender) {
 
 // קבלת תאריך השנה החדשה הסינית (משוער)
 function getChineseNewYear(year) {
-    // זהו חישוב משוער - בפועל התאריכים משתנים
+    // תאריכים מדויקים יותר של השנה החדשה הסינית
     const dates = {
-        2020: new Date(2020, 0, 25),
-        2021: new Date(2021, 1, 12),
-        2022: new Date(2022, 1, 1),
-        2023: new Date(2023, 0, 22),
-        2024: new Date(2024, 1, 10),
-        2025: new Date(2025, 0, 29)
+        1980: new Date(1980, 0, 23), 1981: new Date(1981, 1, 5), 1982: new Date(1982, 0, 25),
+        1983: new Date(1983, 1, 13), 1984: new Date(1984, 1, 2), 1985: new Date(1985, 1, 20),
+        1986: new Date(1986, 1, 9), 1987: new Date(1987, 0, 29), 1988: new Date(1988, 1, 17),
+        1989: new Date(1989, 1, 6), 1990: new Date(1990, 0, 27), 1991: new Date(1991, 1, 15),
+        1992: new Date(1992, 1, 4), 1993: new Date(1993, 1, 23), 1994: new Date(1994, 1, 10),
+        1995: new Date(1995, 0, 29), 1996: new Date(1996, 1, 17), 1997: new Date(1997, 1, 7),
+        1998: new Date(1998, 1, 26), 1999: new Date(1999, 1, 16), 2000: new Date(2000, 1, 5),
+        2001: new Date(2001, 0, 24), 2002: new Date(2002, 1, 12), 2003: new Date(2003, 1, 1),
+        2004: new Date(2004, 0, 22), 2005: new Date(2005, 1, 9), 2006: new Date(2006, 0, 29),
+        2007: new Date(2007, 1, 18), 2008: new Date(2008, 1, 7), 2009: new Date(2009, 0, 26),
+        2010: new Date(2010, 1, 14), 2011: new Date(2011, 1, 3), 2012: new Date(2012, 0, 23),
+        2013: new Date(2013, 1, 10), 2014: new Date(2014, 0, 31), 2015: new Date(2015, 1, 19),
+        2016: new Date(2016, 1, 8), 2017: new Date(2017, 0, 28), 2018: new Date(2018, 1, 16),
+        2019: new Date(2019, 1, 5), 2020: new Date(2020, 0, 25), 2021: new Date(2021, 1, 12),
+        2022: new Date(2022, 1, 1), 2023: new Date(2023, 0, 22), 2024: new Date(2024, 1, 10),
+        2025: new Date(2025, 0, 29), 2026: new Date(2026, 1, 17), 2027: new Date(2027, 1, 6),
+        2028: new Date(2028, 0, 26), 2029: new Date(2029, 1, 13), 2030: new Date(2030, 1, 3)
     };
     
     return dates[year] || new Date(year, 1, 4); // ברירת מחדל
