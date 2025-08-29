@@ -305,7 +305,7 @@ function animateCompass(primaryDirection) {
     const angle = directionAngles[primaryDirection] || 0;
     
     setTimeout(() => {
-        needle.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+        needle.style.transform = `translate(-50%, -100%) rotate(${angle}deg)`;
         compass.classList.remove('rotating');
     }, 1000);
 }
@@ -331,7 +331,7 @@ function setupOrientationHandling() {
         }
         
         // סיבוב המחט - הפיכת הכיוון למעלות
-        needle.style.transform = `translate(-50%, -50%) rotate(${360 - heading}deg)`;
+        needle.style.transform = `translate(-50%, -100%) rotate(${360 - heading}deg)`;
     };
 
     const enableCompass = async () => {

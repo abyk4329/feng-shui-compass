@@ -74,12 +74,13 @@ header p {
 }
 
 .compass.rotating {
-  animation: spin 1s ease-in-out;
+  animation: compassRotate 1s ease-out;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes compassRotate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
 }
 
 .section {
@@ -180,28 +181,31 @@ button {
 }
 
 .compass-center {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--gold);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 5;
+  z-index: 15;
+  border: 2px solid rgba(255,255,255,0.8);
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
 }
 
 .compass-needle {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 2px;
-  height: 44%;
+  width: 3px;
+  height: 42%;
   background: var(--creme);
+  transform: translate(-50%, -100%);
   transform-origin: 50% 100%;
   z-index: 10;
-  border-radius: 1px;
-  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 
 .direction.good {
