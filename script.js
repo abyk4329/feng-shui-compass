@@ -386,6 +386,26 @@ function setupOrientationHandling() {
     btn.addEventListener('click', enableCompass);
 }
 
+// עדכון הכיוונים במצפן
+function updateCompassDirections(data) {
+    const directions = document.querySelectorAll('.direction');
+    
+    directions.forEach(direction => {
+        const directionName = getHebrewDirection(direction.dataset.direction);
+        
+        // הסרת כל המחלקות הקיימות
+        direction.classList.remove('good', 'bad', 'neutral');
+        
+        if (data.goodDirections.includes(directionName)) {
+            direction.classList.add('good');
+        } else if (data.badDirections.includes(directionName)) {
+            direction.classList.add('bad');
+        } else {
+            direction.classList.add('neutral');
+        }
+    });
+}
+
 // עדכון משמעויות הכיוונים במצפן
 function updateCompassMeanings(data) {
     const directionMappings = {
