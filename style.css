@@ -170,14 +170,15 @@ button {
 .compass-container { display: flex; justify-content: center; margin: 18px 0; }
 .compass {
   position: relative;
-  width: 360px;
-  height: 360px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.02);
-  border: 2px solid rgba(0,0,0,0.04);
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(241,238,235,0.7) 100%);
+  border: 3px solid var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
 
 .compass-center {
@@ -230,19 +231,22 @@ button {
 
 .direction {
   position: absolute;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--creme);
-  padding: 8px 10px;
-  border-radius: 10px;
+  padding: 6px 8px;
+  border-radius: 8px;
   font-weight: 700;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: 40px;
+  min-height: 36px;
+  min-width: 60px;
   justify-content: center;
   background: rgba(255,255,255,0.9);
   border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transform: translate(-50%, -50%);
 }
 
 .direction-name {
@@ -258,14 +262,15 @@ button {
   font-weight: 500;
 }
 
-.north { top: 9%; left: 50%; transform: translateX(-50%); }
-.northeast { top: 19%; left: 81%; }
-.east { top: 50%; right: 6%; transform: translateY(-50%); }
-.southeast { bottom: 19%; left: 81%; }
-.south { bottom: 9%; left: 50%; transform: translateX(-50%); }
-.southwest { bottom: 19%; left: 19%; }
-.west { top: 50%; left: 6%; transform: translateY(-50%); }
-.northwest { top: 19%; left: 19%; }
+/* מיקום מדויק של הכיוונים במרחק שווה */
+.north { top: 8%; left: 50%; }
+.northeast { top: 20%; left: 79.3%; }
+.east { top: 50%; left: 92%; }
+.southeast { top: 79.3%; left: 79.3%; }
+.south { top: 92%; left: 50%; }
+.southwest { top: 79.3%; left: 20.7%; }
+.west { top: 50%; left: 8%; }
+.northwest { top: 20%; left: 20.7%; }
 
 .orientation-permission { text-align: center; margin-top: 12px; }
 #orientation-status { font-size: 13px; color: var(--creme); margin-top: 8px; }
@@ -318,13 +323,27 @@ button {
 footer { text-align: center; color: var(--creme); margin-top: 26px; }
 
 @media (max-width: 820px) {
-  .compass { width: 320px; height: 320px; }
+  .compass { width: 340px; height: 340px; }
   .kua-number { font-size: 44px; }
   .directions-info { grid-template-columns: 1fr; }
+  .direction {
+    min-width: 55px;
+    min-height: 32px;
+    font-size: 11px;
+    padding: 5px 7px;
+  }
 }
 
 @media (max-width: 420px) {
   header h1 { font-size: 20px; }
-  .compass { width: 280px; height: 280px; }
+  .compass { width: 300px; height: 300px; }
   .signature-large { max-width: 150px; }
+  .direction {
+    min-width: 50px;
+    min-height: 30px;
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+  .direction-name { font-size: 9px; }
+  .direction-meaning { font-size: 8px; }
 }
