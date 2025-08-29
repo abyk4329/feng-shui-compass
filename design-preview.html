@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדריך עיצוב - מצפן פנג שואי</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .demo-section {
+            background: rgba(255,255,255,0.8);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 18px 0;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .color-swatches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .color-swatch {
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .typography-demo {
+            margin: 20px 0;
+        }
+
+        .button-demo {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .demo-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-container">
+                <div class="header-text">
+                    <h1>🎨 מדריך עיצוב</h1>
+                    <p>מצפן פנג שואי - מערכת עיצוב אורגנית</p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="demo-section">
+                <h2>🌈 פלטת הצבעים</h2>
+                <div class="color-swatches">
+                    <div class="color-swatch" style="background: var(--cinna);">
+                        --cinna<br>#CFB3A9<br>ורוד פודרה
+                    </div>
+                    <div class="color-swatch" style="background: var(--creme);">
+                        --creme<br>#8B7355<br>חום קרמי
+                    </div>
+                    <div class="color-swatch" style="background: var(--froth); color: var(--creme);">
+                        --froth<br>#F1EEEB<br>לבן שמנת
+                    </div>
+                    <div class="color-swatch" style="background: var(--latte);">
+                        --latte<br>#A09086<br>חום לאטה
+                    </div>
+                    <div class="color-swatch" style="background: var(--chai); color: var(--creme);">
+                        --chai<br>#E4D8CB<br>בז' חאי
+                    </div>
+                    <div class="color-swatch" style="background: var(--gold); color: #2b2b2b;">
+                        --gold<br>#F7E7CE<br>זהב שמפניה
+                    </div>
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2>📝 טיפוגרפיה</h2>
+                <div class="typography-demo">
+                    <h1 style="font-family: 'Assistant', sans-serif;">כותרת ראשית - Assistant Font</h1>
+                    <h2 style="font-family: 'Assistant', sans-serif;">כותרת משנית - Assistant Font</h2>
+                    <h3 style="font-family: 'Assistant', sans-serif;">כותרת שלישית - Assistant Font</h3>
+                    <p style="font-family: 'Assistant', sans-serif;">טקסט רגיל - זהו הפונט העיקרי לאפליקציה</p>
+                    <p style="font-family: 'Hello Paris Script', cursive; font-size: 24px;">חתימה דקורטיבית - Hello Paris Script</p>
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2>🔘 כפתורים</h2>
+                <div class="button-demo">
+                    <button class="demo-button" style="background: var(--gold); color: #2b2b2b;">כפתור ראשי</button>
+                    <button class="demo-button" style="background: var(--muted); color: #fff;">כפתור משני</button>
+                    <button class="demo-button good">כפתור טוב</button>
+                    <button class="demo-button bad">כפתור רע</button>
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2>📋 קומפוננטים</h2>
+                <div class="detail-section">
+                    <h3>אישיות</h3>
+                    <p>אינטואיטיבי, רגיש, יצירתי, אמפתי, זורם</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>חוזקות</h3>
+                    <p>יכולת אינטואיציה חזקה, יצירתיות, הבנת רגשות, גמישות מחשבתית</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>אתגרים</h3>
+                    <p>רגישות יתר, קושי בקבלת החלטות, הימנעות מקונפליקטים</p>
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2>📱 טפסים</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="demo-date">תאריך לידה:</label>
+                        <input type="date" id="demo-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="demo-select">בחר אפשרות:</label>
+                        <select id="demo-select">
+                            <option>אפשרות 1</option>
+                            <option>אפשרות 2</option>
+                        </select>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
